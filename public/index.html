@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checklist Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      color: #4CAF50;
+    }
+    .checklist {
+      margin-top: 20px;
+    }
+    .rule {
+      padding: 10px;
+      margin-bottom: 8px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .passed {
+      background-color: #d4edda;
+      color: #155724;
+    }
+    .failed {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+    .loading {
+      color: #007bff;
+    }
+  </style>
+</head>
+<body>
+  <h1>Checklist Evaluation Dashboard</h1>
+  <div id="checklist" class="checklist">
+    <p class="loading">Loading checklist...</p>
+  </div>
+
+  <script>
+    //function to load checklist on dashboard
+    async function loadChecklist() {
+      try {
+        //fetch the response 
+        const response = await fetch('/api/checklist');
+        //convert the response to json 
+        const result = await response.json();
+        //getelement or class by checklist id
+        const checklistElement = document.getElementById('checklist');
+        checklistElement.innerHTML = ''; // Clear loading text 
+
+        result.forEach(rule => {
+          const ruleElement = document.createElement('div');
+          ruleElement.classList.add('rule', rule.status.toLowerCase());
+          ruleElement.innerHTML = `<strong>${rule.rule}</strong>: <span>${rule.status}</span>`;
+          checklistElement.appendChild(ruleElement);
+        });
+      } catch (error) {
+        console.error('Error loading checklist:', error);
+        const checklistElement = document.getElementById('checklist');
+        checklistElement.innerHTML = '<p>Error loading checklist.</p>';
+      }
+    }
+
+    loadChecklist();
+  </script>
+</body>
+</html>
