@@ -17,7 +17,7 @@ Clone this repository to your local machine.
 
 bash
 Copy code
-git clone https://github.com/kuldeepsinghra/checklist-system.git
+git clone https://github.com/kuldeepsinghra/Simple-Checklist-System.git
 cd checklist-system
 2. Install Dependencies
 Run the following command to install the necessary Node.js packages (express and axios).
