@@ -30,7 +30,7 @@ Once the dependencies are installed, you can start the server with the following
 
 bash
 Copy code
-node server.js
+**node server.js**
 This will start the server on http://localhost:3000.
 
 4. Open the Dashboard
