@@ -19,7 +19,7 @@ bash
 Copy code
 git clone https://github.com/kuldeepsinghra/Simple-Checklist-System.git
 cd checklist-system
-2. Install Dependencies
+2. Install Dependencies IF not present otherwise i am not putting the node_modules into gitignore. it will be dowloaded.
 Run the following command to install the necessary Node.js packages (express and axios).
 
 bash
